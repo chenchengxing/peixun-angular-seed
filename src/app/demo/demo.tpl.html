@@ -40,7 +40,12 @@
       </div>
 
     </tab>
-    <tab heading="SJ">Short Labeled Justified content</tab>
+    <tab heading="Orgs">
+      <ul ng-show="orgs.length">
+        <li ng-repeat="org in orgs"><a href="{{org.url}}">{{org.name}}</a></li>
+      </ul>
+      <div ng-hide="orgs.length">There's no orgnization yet,join now!</div>
+    </tab>
     <tab heading="Long Justified">Long Labeled Justified content</tab>
   </tabset>
 </div>

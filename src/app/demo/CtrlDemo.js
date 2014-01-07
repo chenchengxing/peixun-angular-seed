@@ -1,14 +1,24 @@
-define(['app'], function (app) {
-  app.registerController('CtrlDemo', ['$scope', function ($scope) {
+define([
+       'app',
+       '../_service/Org'
+       ], function ( app ) {
+  app.registerController( 'CtrlDemo', [ '$scope', 'Org', function ( $scope, Org ) {
+    Org.get( { ip: 'xx.xx.xx.xx' }, function ( response ) {
+      console.log( response );
+      if ( response.code === 200 ) {
+        $scope.orgs = response.data;
+      }
+    });
+
     $scope.name = "Demo Name";
     $scope.test = "test";
-    if (true) {
+    if ( true ) {
       var i = 0;
     }
-    $scope['test'] = "hehe";
+    $scope[ 'test' ] = "hehe";
     $scope.tabs = [
-      { title:"Dynamic Title 1", content:"Dynamic content 1" },
-      { title:"Dynamic Title 2", content:"Dynamic content 2", disabled: true }
+      { title: "Dynamic Title 1", content: "Dynamic content 1" },
+      { title: "Dynamic Title 2", content: "Dynamic content 2", disabled: true }
     ];
 
     $scope.alertMe = function() {

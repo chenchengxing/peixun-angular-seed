@@ -47,7 +47,7 @@ require.config({
 // run is required to force the app to run, not because we need to interact
 // with it.  Anything required here will by default be combined/minified by
 // r.js if you use it.
-require(['app', 'angular', 'angular-mock', 'app-init', 'angular-couch-potato', 'demo/CtrlDemo.spec'], function(app, angular) {
+require(['app', 'angular', 'angular-mock', 'app-init', 'angular-couch-potato', 'demo/CtrlDemo.spec', '_service/Org.spec'], function(app, angular) {
 
   window.__karma__.start();
 

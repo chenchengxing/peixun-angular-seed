@@ -9,9 +9,9 @@ define(['app'], function (app) {
        */
       get: function ( paramObj, cbfn ) {
         angular.extend( paramObj, { _: new Date().getTime() } );//ie cache
-        return $http({
+        $http({
           method: 'get',
-          url: '../jsondata/orgs.json',
+          url: '../jsondata/orgs.json',  //for test data
           // url: '/platform/getOrgList', //should switch to real url
           params : paramObj
         }).success(function ( result ) {
