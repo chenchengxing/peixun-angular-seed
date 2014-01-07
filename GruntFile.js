@@ -8,6 +8,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-recess');
 
   /**
    * Load in our build configuration file.
@@ -48,6 +49,15 @@ module.exports = function ( grunt ) {
             expand: true
           }
         ]
+      },
+      buildBootstrap: {
+        files: [{
+          src: [ 'vendor/bootstrap/img/*.png'],
+          dest: 'build/assets',
+          cwd: '.',
+          expand: true,
+          flatten: true
+        }]
       },
       buildIndex: {
         files: [
@@ -94,7 +104,7 @@ module.exports = function ( grunt ) {
     watch: {
       hint: {
         options: {
-          livereload: true,
+          livereload: true
         },
         files: [
           'src/**/*.js', 'src/index.html'
@@ -111,7 +121,7 @@ module.exports = function ( grunt ) {
       main: {
         src: ['src/**/*.tpl.html'],
         dest: '<%= build_dir %>/src/app/app-templates.js'
-      },
+      }
     },
     karma: {
       unit: {
@@ -154,7 +164,13 @@ module.exports = function ( grunt ) {
           baseUrl: "./src/app",
           mainConfigFile: "src/app/main.js",
           out: "bin/px-min.js"
+          
         }
+      },
+      build: {
+        optimizeCss: "standard.keepLines",
+        cssIn: "src/css/app.css",
+        out: "path/to/css-optimized.css"
       }
     },
     index: {
@@ -166,10 +182,43 @@ module.exports = function ( grunt ) {
       }
 
     },
+    bootstrap: {
+        build: {
+          src: []
+        }
+    },
     concat: {
       compile: {
         src: [ 'vendor/requirejs/require.js', 'bin/px-min.js'],
         dest: 'bin/px-min.js'
+      },
+      buildCss: {
+        src: [ 'vendor/bootstrap/css/bootstrap.css', 'src/**/*.css'],
+        dest: 'build/assets/all.css'
+      }
+    },
+    recess: {
+      build: {
+        src: [ 'src/css/app.css' ],
+        dest: 'build/assets/all.css',
+        options: {
+          compile: true,
+          compress: false,
+          noUnderscores: false,
+          noIDs: false,
+          zeroUnits: false
+        }
+      },
+      compile: {
+        src: [ '<%= recess.build.dest %>' ],
+        dest: '<%= recess.build.dest %>',
+        options: {
+          compile: true,
+          compress: true,
+          noUnderscores: false,
+          noIDs: false,
+          zeroUnits: false
+        }
       }
     }
   };
@@ -179,9 +228,18 @@ module.exports = function ( grunt ) {
   grunt.registerTask('default', ['clean', 'copy', 'html2js']);
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('watchHint', ['watch:hint']);
-  grunt.registerTask('build', ['copy', 'index:build']);
+  grunt.registerTask('build', ['copy', 'index:build', 'html2js', 'concat:buildCss', 'bootstrap:build']);
   grunt.registerTask('compile', ['requirejs', 'index:compile', 'concat:compile', 'copy:compileCopyApp', 'copy:compileCopyAssets']);
   
+
+  grunt.registerMultiTask('bootstrap', 'modify bootstrap icons png path to assets', function () {
+    
+    grunt.file.copy('build/assets/all.css', 'build/assets/all.css', { 
+      process: function ( contents, path ) {
+        return contents.replace(/\.\.\/img\/glyphicons-halflings/g, '\.\/glyphicons-halflings');
+      }
+    });
+  })
 
   grunt.registerMultiTask('index', 'replace js', function () {
     var dir = this.data.dir;
