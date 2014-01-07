@@ -1,0 +1,36 @@
+{
+  "message": "操作成功！",
+  "data": [
+    {
+      "name": "环球雅思",
+      "url": "http://www.gedu.org/",
+      "logo": "http://vs-static.baidu.com/edu/newjuhe/asset/img/org-img/huanqiujiaoyu.jpg"
+    },
+    {
+      "name": "新航道",
+      "url": "http://www.xhd.cn/",
+      "logo": "http://vs-static.baidu.com/edu/newjuhe/asset/img/org-img/xinhangdao.jpeg"
+    },
+    {
+      "name": "上海环球雅思",
+      "url": "http://shanghai.gedu.org/",
+      "logo": "http://vs-static.baidu.com/edu/newjuhe/asset/img/org-img/huanqiuyasi.jpg"
+    },
+    {
+      "name": "达内IT培训集团",
+      "url": "http://www.tarena.com.cn/",
+      "logo": "http://vs-static.baidu.com/edu/newjuhe/asset/img/org-img/danei.jpg"
+    },
+    {
+      "name": "环球美联",
+      "url": "http://www.ui-usa.cn/",
+      "logo": "http://vs-static.baidu.com/edu/newjuhe/asset/img/org-img/huanqiumeilian.png"
+    },
+    {
+      "name": "CGWANG动漫学院",
+      "url": "http://www.cgwang.com/",
+      "logo": "http://vs-static.baidu.com/edu/newjuhe/asset/img/org-img/dongmanxueyuan.jpg"
+    }
+  ],
+  "code": 200
+}
