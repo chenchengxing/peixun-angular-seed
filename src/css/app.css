@@ -4,4 +4,9 @@
  */
 
 
-.app {color: #eab213;}
+.app {
+    color: #eab213;
+}
+.clear-navbar {
+    margin-top: 60px
+}

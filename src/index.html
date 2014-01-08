@@ -7,9 +7,40 @@
   <link rel="stylesheet" type="text/css" href="assets/all.css">
 </head>
 <body>
-  <img src="assets/logo.png">
-  watch1
-  <div ui-view></div>
-  <%=compiledJs %>
+    <header>
+       <div class="navbar navbar-inverse navbar-fixed-top">
+           <div class="navbar-inner">
+                <div class="container">
+                    <a href="/" class="brand">Hello Angular</a>
+                    <ul class="nav">
+                        <li>
+                            <a ui-sref="demo">
+                                <i class="icon-eye-open icon-white"></i>
+                                demo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+           </div>
+       </div>
+    </header>
+  <!-- <img src="assets/logo.png"> -->
+    <div class="container-fluid clear-navbar">
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="well">
+                <ul class="nav nav-list">
+                    <li class="nav-header">demo 1</li>
+                    <li class="active"><a href="">demo 1.1</a></li>
+                    <li><a href="">demo 1.2</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="span10">
+          <div ui-view></div>
+        </div>
+    </div>
+    </div>
+    <%=compiledJs %>
 </body>
 </html>
