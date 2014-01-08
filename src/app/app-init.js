@@ -1,7 +1,7 @@
 // Anything required here wil by default be combined/minified by r.js
 // if you use it.
 define(['app', 'routeDefs'], function(app) {
-    app.factory('myHttpInterceptor',['$q','$log', '$rootScope', function ($q, $log, $rootScope) {
+  app.factory('myHttpInterceptor',['$q','$log', '$rootScope', function ($q, $log, $rootScope) {
     var errorModalFlag = false;
     return function (promise) {
         return promise.then(function (response) {
@@ -38,11 +38,11 @@ define(['app', 'routeDefs'], function(app) {
                 });
                 $modal.fadeIn(500);
             }
-            
+
             return $q.reject(response);
         });
     };
-}]);
+  }]);
   app.config(['routeDefsProvider', '$httpProvider', function(routeDefsProvider, $httpProvider ) {
 
     // in large applications, you don't want to clutter up app.config
@@ -54,7 +54,7 @@ define(['app', 'routeDefs'], function(app) {
         'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
         'X-Requested-With':'XMLHttpRequest'
     };
-    
+
     //put header setting to make it work
     $httpProvider.defaults.headers.put = {
         'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -67,10 +67,10 @@ define(['app', 'routeDefs'], function(app) {
 
     $httpProvider.responseInterceptors.push('myHttpInterceptor');
   }]);
-app.config(['$compileProvider', function($compileProvider){
-    //unsafe url 处理，不然在href标签上会加上 unsafe：xxx  
-    $compileProvider.urlSanitizationWhitelist(/^\s*((https?|ftp|mailto|tel):)|#/);
-}]);
+  app.config(['$compileProvider', function($compileProvider){
+      //unsafe url 处理，不然在href标签上会加上 unsafe：xxx
+      $compileProvider.urlSanitizationWhitelist(/^\s*((https?|ftp|mailto|tel):)|#/);
+  }]);
   app.run([
     '$couchPotato', '$state', '$stateParams', '$rootScope',
     function($couchPotato, $state, $stateParams, $rootScope) {
@@ -101,7 +101,7 @@ app.config(['$compileProvider', function($compileProvider){
    "    </div>");
     // var msie = parseInt((/msie (\d+)/.exec((navigator.userAgent).toLowerCase()) || [])[1], 10);
     //     if (msie || msie < 9) {
-            
+
         // }
 
 }]);
@@ -115,12 +115,13 @@ app.config(['$compileProvider', function($compileProvider){
   // }])
   app.directive('pxJspinject', ['$rootScope', function ($rootScope) {
     return {
+        restrict: "EA",
         link : function (scope, element, attrs) {
             $rootScope.JSP_VALUE = $rootScope.JSP_VALUE || {};
             $rootScope.JSP_VALUE[attrs.pxJspinject] = element.val();
         }
     };
-}]);
+  }]);
   app.controller('CtrlApp', ['$scope', '$http', '$rootScope', '$timeout', function ($scope, $http, $rootScope, $timeout) {
         var msie = parseInt((/msie (\d+)/.exec((navigator.userAgent).toLowerCase()) || [])[1], 10);
         if (msie || msie < 9) {
@@ -128,8 +129,8 @@ app.config(['$compileProvider', function($compileProvider){
                 $(".accordion-group:last .accordion-inner").css("borderBottom", "1px solid #e5e5e5");
             }, 100);
         }
-        
-        
+
+
         $http({
             method : "get",
             url : "/platform/rs/login/user"
@@ -147,7 +148,7 @@ app.config(['$compileProvider', function($compileProvider){
             ZhixinSiteUrl: "http://jiaoyu.px.baidu.com:8875/xuetang"
         };
 
-        
+
         $rootScope.msie = msie;
         // $rootScope.navOpenItem = "站点管理";
         // $scope.setActiveNavItem = function (text) {
@@ -169,7 +170,7 @@ app.config(['$compileProvider', function($compileProvider){
             } catch(e) {
                 setDevNav();
             }
-            
+
         })
         .error( function (data, status) {
             setDevNav();
@@ -182,12 +183,12 @@ app.config(['$compileProvider', function($compileProvider){
             }).success(function (response) {
                 $rootScope.navData = response;
             });
-            
+
         }
-        
+
     }]);
 
-        
+
 
 
 });

@@ -23,20 +23,54 @@ define(['app'], function(app) {
         $stateProvider
           .state('home', {
             url: '/',
-            templateUrl: 'common/home.tpl.html',
-            // template: '<p class="lead">欢迎来到百度教育！</p><p>左侧是您的导航</p>' +
-            //   '<p>试试 创建课程 或 创建直播 来开启您的百度教育之旅<' + '/p>'
-
+            views: {
+              'leftNav' : {
+                templateUrl: 'common/home.leftNav.tpl.html'
+              },
+              'main' : {
+                templateUrl: 'common/home.main.tpl.html',
+              }
+            }
           })
           .state('demo', {
             url: '/demo',
-            templateUrl: 'demo/demo.tpl.html',
-            controller: 'CtrlDemo',
+            views: {
+              'leftNav' : {
+                templateUrl: 'demo/leftNav.tpl.html'
+              },
+              'main' : {
+                templateUrl: 'demo/demo.tpl.html',
+                controller: 'CtrlDemo'
+              }
+            },
             resolve: {
               dummy: $couchPotatoProvider.resolveDependencies(['demo/CtrlDemo'])
             }
+          })
+          .state('demo.http', {
+            url: '/http',
+            views: {
+              'demoContainer' : {
+                templateUrl: 'demo/demo.http.tpl.html',
+                controller: 'CtrlDemoHttp'
+              }
+            },
+            resolve: {
+              dummy: $couchPotatoProvider.resolveDependencies(['demo/CtrlDemoHttp'])
+            }
+          })
+          .state('demo.form', {
+            url: '/http',
+            views: {
+              'demoContainer' : {
+                templateUrl: 'demo/demo.form.tpl.html',
+                controller: 'CtrlDemoForm'
+              }
+            },
+            resolve: {
+              dummy: $couchPotatoProvider.resolveDependencies(['demo/CtrlDemoForm'])
+            }
           });
-
       }
     ]
   );
