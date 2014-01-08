@@ -107,10 +107,10 @@ module.exports = function ( grunt ) {
           livereload: true
         },
         files: [
-          'src/**/*.js', 'src/index.html'
+          'src/**/*.js', 'src/index.html', 'Gruntfile.js'
         ],
         // tasks: [ 'clean', 'html2js', 'copy', 'jshint']
-        tasks: ['jshint']
+        tasks: ['jshint', 'build']
       }
     },
     html2js: {
@@ -234,16 +234,16 @@ module.exports = function ( grunt ) {
 
   grunt.registerMultiTask('bootstrap', 'modify bootstrap icons png path to assets', function () {
     
-    grunt.file.copy('build/assets/all.css', 'build/assets/all.css', { 
+    grunt.file.copy('build/assets/all.css', 'build/assets/all.css', {
       process: function ( contents, path ) {
-        return contents.replace(/\.\.\/img\/glyphicons-halflings/g, '\.\/glyphicons-halflings');
+        return contents.replace(/\.\.\/img\/glyphicons-halflings/g, '.\/glyphicons-halflings');
       }
     });
-  })
+  });
 
   grunt.registerMultiTask('index', 'replace js', function () {
     var dir = this.data.dir;
-    grunt.file.copy('src/index.html', dir + '/index.html', { 
+    grunt.file.copy('src/index.html', dir + '/index.html', {
       process: function ( contents, path ) {
         if ( dir === 'build') {
           return grunt.template.process( contents, {
@@ -259,7 +259,7 @@ module.exports = function ( grunt ) {
         });
       }
     });
-  })
+  });
   /*below for test*/
   // grunt.initConfig({
   //   log: {
