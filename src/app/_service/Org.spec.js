@@ -1,32 +1,33 @@
+define( [ 'angular', 'angular-mock', './Org' ], function () {
 
-
-define(['angular', 'angular-mock', './Org'], function (angular, couchPotato) {
-
-  describe('xxx', function () {
-    // body...
-    beforeEach(function (argument) {
-      // angular.module('app', ['scs.couch-potato', 'ui.router', 'ui.bootstrap', 'ui.bootstrap.tpls', 'chieffancypants.loadingBar', 'app-templates'])
-      module('app');
+  describe( '[http service] Org Spec', function () {
+    beforeEach(function () {
+      module( 'app' );
     });
     var MainCtrl, scope, org, rootScope;
+    var urlReg = /\.\.\/jsondata\/orgs\.json/;
 
-      beforeEach(inject(function(Org, _$httpBackend_, $rootScope) {
-            rootScope = $rootScope;
-            org = Org;
-            $httpBackend = _$httpBackend_;
-        }));
+    beforeEach(inject(function( Org, _$httpBackend_, $rootScope ) {
+      rootScope = $rootScope;
+      org = Org;
+      $httpBackend = _$httpBackend_;
+    }));
 
-        it('httppp', function() {
-            $httpBackend.expectGET(/\.\.\/jsondata\/orgs\.json/).respond({code: 403});
-            org.get( { pageNo: 1 }, function (result) {
-                expect(result).toBeTruthy();
-            });
-            if(!rootScope.$$phase) {
-              rootScope.$apply();    //AngularJS 1.1.4 fix
-            }
-            $httpBackend.flush();
-        });
+    it( 'should pass in [id] as it\'s parameter', function () {
+      //without id
+      org.get( { ip: 'xxx22' }, function ( result ) {
+        expect( result.code ).toBe( 404 );
+      });
+      //with id
+      $httpBackend.expectGET( urlReg ).respond( { code: 200 } );
+      org.get( { id: 'xxx22' }, function ( result ) {
+        expect( result.code ).toBe( 200 );
+      });
+      if( !rootScope.$$phase ) {
+        rootScope.$apply();    //AngularJS 1.1.4 fix
+      }
+      $httpBackend.flush();
+    });
   });
-
-
+  
 });
