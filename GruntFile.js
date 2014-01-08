@@ -107,10 +107,19 @@ module.exports = function ( grunt ) {
           livereload: true
         },
         files: [
-          'src/**/*.js', 'src/index.html', 'Gruntfile.js'
+          'src/**/*.js', 'src/index.html', 'Gruntfile.js', '!src/**/*.spec.js'
         ],
         // tasks: [ 'clean', 'html2js', 'copy', 'jshint']
         tasks: ['jshint', 'build']
+      },
+      spec: {
+        options: {
+
+        },
+        files: [
+          'src/**/*.spec.js'
+        ],
+        tasks: [ 'jshint' ]
       }
     },
     html2js: {
