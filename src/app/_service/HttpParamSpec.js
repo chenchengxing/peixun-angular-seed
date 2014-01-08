@@ -22,7 +22,9 @@ define(['app'], function ( app ) {
             code: 404,
             message: 'Http request without required parameters.'
           } );
+          return false;
         }
+        return true;
       }
     };
   }]);

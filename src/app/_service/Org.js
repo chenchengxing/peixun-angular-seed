@@ -12,7 +12,10 @@ define([
        * @return {void}          no return
        */
       get: function ( paramObj, cbfn ) {
-        HttpParamSpec.spec( paramObj, [ 'id' ], cbfn ); // make sure the wanted parameter(s) pass in
+        if ( !HttpParamSpec.spec( paramObj, [ 'id' ], cbfn ) ) {
+          // make sure the wanted parameter(s) pass in
+          return false;
+        }
         var defaults = {
           pageNo: 1,
           pageSize: 10
