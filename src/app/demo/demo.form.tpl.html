@@ -1,0 +1,51 @@
+<div>
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>
+                简单表单元素
+            </legend>
+            <div class="row">
+                <div class="span6">
+                    <div class="control-group">
+                        <label class="control-label">input-text</label>
+                        <div class="controls">
+                            <input type="text" ng-model="simpleForm.inputText" id="inputText" placeholder="input some text here...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">checkbox</label>
+                        <div class="controls">
+                            <label class="checkbox inline" ng-repeat="color in colors">
+                              <input type="checkbox" value="red"><span>{{color}}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">button</label>
+                        <div class="controls">
+                            <button class="btn btn-primary" ng-click="alertValues();">confirm</button>
+                            <button class="btn btn-link" ng-click="emptyAll();">empty all</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>item</th>
+                                <th>valuse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>inputText</td>
+                                <td>{{simpleForm.inputText}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        </fieldset>
+    </form>
+</div>
