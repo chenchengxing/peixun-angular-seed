@@ -60,7 +60,7 @@ define(['app'], function(app) {
             }
           })
           .state('demo.form', {
-            url: '/http',
+            url: '/form',
             views: {
               'demoContainer' : {
                 templateUrl: 'demo/demo.form.tpl.html',

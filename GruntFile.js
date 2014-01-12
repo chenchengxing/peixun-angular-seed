@@ -17,7 +17,7 @@ module.exports = function ( grunt ) {
   var userConfig = require( './user.config.js' );
 
   /**
-   * This is the configuration object Grunt uses to give each plugin its 
+   * This is the configuration object Grunt uses to give each plugin its
    * instructions.
    */
   var taskConfig = {
@@ -108,7 +108,7 @@ module.exports = function ( grunt ) {
           livereload: true
         },
         files: [
-          'src/**/*.js', 'src/index.html', 'Gruntfile.js', '!src/**/*.spec.js'
+          'src/**/*.js', 'src/index.html', 'src/**/*.tpl.html', 'Gruntfile.js', '!src/**/*.spec.js'
         ],
         // tasks: [ 'clean', 'html2js', 'copy', 'jshint']
         tasks: ['jshint', 'build']
@@ -174,7 +174,7 @@ module.exports = function ( grunt ) {
           baseUrl: "./src/app",
           mainConfigFile: "src/app/main.js",
           out: "bin/px-min.js"
-          
+
         }
       },
       build: {
@@ -240,10 +240,10 @@ module.exports = function ( grunt ) {
   grunt.registerTask('watchHint', ['watch:hint']);
   grunt.registerTask('build', ['copy', 'index:build', 'html2js', 'concat:buildCss', 'bootstrap:build']);
   grunt.registerTask('compile', ['requirejs', 'index:compile', 'concat:compile', 'copy:compileCopyApp', 'copy:compileCopyAssets']);
-  
+
 
   grunt.registerMultiTask('bootstrap', 'modify bootstrap icons png path to assets', function () {
-    
+
     grunt.file.copy('build/assets/all.css', 'build/assets/all.css', {
       process: function ( contents, path ) {
         return contents.replace(/\.\.\/img\/glyphicons-halflings/g, '.\/glyphicons-halflings');

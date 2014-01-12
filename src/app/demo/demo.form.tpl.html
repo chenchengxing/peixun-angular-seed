@@ -1,0 +1,67 @@
+<div>
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>
+                简单表单元素
+            </legend>
+            <div class="row">
+                <div class="span6">
+                    <div class="control-group">
+                        <label class="control-label">input-text</label>
+                        <div class="controls">
+                            <input type="text" cd-input-red ng-model="simpleForm.inputText" id="inputText" placeholder="input some text here...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">checkbox</label>
+                        <div class="controls" cd-checkboxes cd-checkboxes-name="color">
+                            <label class="checkbox inline" ng-repeat="color in color.array">
+                              <input type="checkbox" checked="checked" name="color" value="{{color}}"><span>{{color}}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">redio</label>
+                        <div class="controls">
+                            <label class="redio" ng-repeat="gen in gender.genders">
+                                <input type="radio" name="gender" value="{{gen.name}}" ng-model="gender.val"><span>{{gen.name}}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">button</label>
+                        <div class="controls">
+                            <button class="btn btn-primary" ng-click="alertValues();">confirm</button>
+                            <button class="btn btn-link" ng-click="emptyAll();">empty all</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>item</th>
+                                <th>valuse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>inputText</td>
+                                <td>{{simpleForm.inputText}}</td>
+                            </tr>
+                            <tr>
+                                <td>inputCheckbox</td>
+                                <td>{{formData.color.text}}</td>
+                            </tr>
+                            <tr>
+                                <td>inputRadio</td>
+                                <td>{{gender.val}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        </fieldset>
+    </form>
+</div>
