@@ -9,6 +9,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-recess');
+  grunt.task.loadNpmTasks('yt');
 
   /**
    * Load in our build configuration file.
