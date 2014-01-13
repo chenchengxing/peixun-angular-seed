@@ -1,6 +1,8 @@
 define([
     'app',
-    '../_directives/checklistModel'
+    '../_directives/checklistModel',
+    '../_directives/ytMaxlength',
+    '../_directives/ytMinlength'
     ], function ( app ) {
         app.registerController( 'CtrlDemoForm', [ '$scope' , function ( $scope ) {
             // $scope.colors = ['red', 'blue', 'green'];
@@ -10,7 +12,8 @@ define([
             $scope.simpleForm = {
                 inputText : 'some init text~',
                 inputCheckbox : ['blue', 'red'],
-                inputRadio: 'male'
+                inputRadio: 'male',
+                textarea: '0123'
             };
             $scope.alertValues = function () {
                 var text = 'the form values as: \n';

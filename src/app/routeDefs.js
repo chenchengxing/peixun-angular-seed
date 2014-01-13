@@ -70,6 +70,18 @@ define(['app'], function(app) {
             resolve: {
               dummy: $couchPotatoProvider.resolveDependencies(['demo/CtrlDemoForm'])
             }
+          })
+          .state('demo.inputText', {
+            url: '/inputText',
+            views: {
+              'demoContainer' : {
+                templateUrl: 'demo/demo.inputText.tpl.html',
+                controller: 'CtrlDemoInputText'
+              }
+            },
+            resolve: {
+              dummy: $couchPotatoProvider.resolveDependencies(['demo/CtrlDemoInputText'])
+            }
           });
         $stateProvider.state('zzx', {
           url: '/zzx',

@@ -1,6 +1,6 @@
 define([
        'app',
-       '../_service/Org'
+       '../_services/Org'
        ], function ( app ) {
   app.registerController( 'CtrlDemoHttp', [ '$scope', 'Org', function ( $scope, Org ) {
     Org.get( { id: 'xx.xx.xx.xx' }, function ( response ) {

@@ -1,5 +1,5 @@
 <div>
-    <form class="form-horizontal">
+    <div ng-form="simple" class="form-horizontal">
         <fieldset>
             <legend>
                 简单表单元素
@@ -12,6 +12,14 @@
                             <input type="text" ng-model="simpleForm.inputText" id="inputText" placeholder="input some text here...">
                         </div>
                     </div>
+
+                    <div class="control-group">
+                        <label class="control-label">textarea</label>
+                        <div class="controls">
+                            <textarea rows="6" ng-model="simpleForm.textarea" required yt-minlength="4" yt-maxlength="10" popover="长度限制4-10个字符" popover-trigger="focus" popover-append-to-body="true" popover-placement="right"></textarea>
+                        </div>
+                    </div>
+
                     <div class="control-group">
                         <label class="control-label">checkbox</label>
                         <div class="controls">
@@ -20,6 +28,7 @@
                             </label>
                         </div>
                     </div>
+
                     <div class="control-group">
                         <label class="control-label">redio</label>
                         <div class="controls">
@@ -32,7 +41,7 @@
                     <div class="control-group">
                         <label class="control-label">button</label>
                         <div class="controls">
-                            <button class="btn btn-primary" ng-click="alertValues();">confirm</button>
+                            <button class="btn btn-primary" ng-disabled="!simple.$valid" ng-click="alertValues();">confirm</button>
                             <button class="btn btn-link" ng-click="emptyAll();">empty all</button>
                         </div>
                     </div>
@@ -51,6 +60,10 @@
                                 <td>{{simpleForm.inputText}}</td>
                             </tr>
                             <tr>
+                                <td>textarea</td>
+                                <td>{{simpleForm.textarea}}</td>
+                            </tr>
+                            <tr>
                                 <td>inputCheckbox</td>
                                 <td>{{simpleForm.inputCheckbox}}</td>
                             </tr>
@@ -63,5 +76,5 @@
             </div>
         </div>
         </fieldset>
-    </form>
+    </div>
 </div>
