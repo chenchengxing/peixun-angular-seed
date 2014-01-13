@@ -9,22 +9,22 @@
                     <div class="control-group">
                         <label class="control-label">input-text</label>
                         <div class="controls">
-                            <input type="text" cd-input-red ng-model="simpleForm.inputText" id="inputText" placeholder="input some text here...">
+                            <input type="text" ng-model="simpleForm.inputText" id="inputText" placeholder="input some text here...">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">checkbox</label>
-                        <div class="controls" cd-checkboxes cd-checkboxes-name="color">
-                            <label class="checkbox inline" ng-repeat="color in color.array">
-                              <input type="checkbox" checked="checked" name="color" value="{{color}}"><span>{{color}}</span>
+                        <div class="controls">
+                            <label class="checkbox inline" ng-repeat="color in colors">
+                              <input type="checkbox" checklist-model="simpleForm.inputCheckbox" checklist-value="color"><span>{{color}}</span>
                             </label>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">redio</label>
                         <div class="controls">
-                            <label class="redio" ng-repeat="gen in gender.genders">
-                                <input type="radio" name="gender" value="{{gen.name}}" ng-model="gender.val"><span>{{gen.name}}</span>
+                            <label class="redio" ng-repeat="gen in genders">
+                                <input type="radio" name="gender" value="{{gen}}" ng-model="simpleForm.inputRadio"><span>{{gen}}</span>
                             </label>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>item</th>
+                                <th style="width:80px">item</th>
                                 <th>valuse</th>
                             </tr>
                         </thead>
@@ -52,11 +52,11 @@
                             </tr>
                             <tr>
                                 <td>inputCheckbox</td>
-                                <td>{{formData.color.text}}</td>
+                                <td>{{simpleForm.inputCheckbox}}</td>
                             </tr>
                             <tr>
                                 <td>inputRadio</td>
-                                <td>{{gender.val}}</td>
+                                <td>{{simpleForm.inputRadio}}</td>
                             </tr>
                         </tbody>
                     </table>

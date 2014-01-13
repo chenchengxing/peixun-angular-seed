@@ -1,36 +1,30 @@
 define([
     'app',
-    '../_directives/cdInputRed',
-    '../_directives/cdCheckboxes'
+    '../_directives/checklistModel'
     ], function ( app ) {
         app.registerController( 'CtrlDemoForm', [ '$scope' , function ( $scope ) {
             // $scope.colors = ['red', 'blue', 'green'];
-            $scope.color = {
-                valText: "",
-                valArry: "",
-                array: ['red', 'green', 'blue'],
-            };
-            $scope.gender = {
-                val: "",
-                genders : [
-                    {
-                        name: 'male',
-                        chosen : false
-                    },
-                    {
-                        name: 'female',
-                        chosen : false
-                    }
-                ]
-            };
+            $scope.colors = ['red', 'green', 'blue', 'yellow'];
+            $scope.genders = ['male', 'female'];
 
             $scope.simpleForm = {
-                inputText : '',
-                inputCheckbox : []
+                inputText : 'some init text~',
+                inputCheckbox : ['blue', 'red'],
+                inputRadio: 'male'
             };
             $scope.alertValues = function () {
-                // alert("inputText value : " + $scope.simpleForm.inputText);
-                alert($scope.gender.val);
+                var text = 'the form values as: \n';
+                angular.forEach($scope.simpleForm, function (value, key) {
+                    text += key + " : " + value + "\n";
+                });
+                alert(text);
+            };
+            $scope.emptyAll = function () {
+                $scope.simpleForm = {
+                    inputText : '',
+                    inputCheckbox : [],
+                    inputRadio: ''
+                };
             };
         }]);
 });
