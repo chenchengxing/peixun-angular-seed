@@ -10,6 +10,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-recess');
   grunt.task.loadNpmTasks('yt');
+  grunt.task.loadNpmTasks('bird');
 
   /**
    * Load in our build configuration file.
