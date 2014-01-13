@@ -69,7 +69,7 @@ define(['app', 'routeDefs'], function(app) {
   }]);
   app.config(['$compileProvider', function($compileProvider){
       //unsafe url 处理，不然在href标签上会加上 unsafe：xxx
-      $compileProvider.urlSanitizationWhitelist(/^\s*((https?|ftp|mailto|tel):)|#/);
+      // $compileProvider.urlSanitizationWhitelist(/^\s*((https?|ftp|mailto|tel):)|#/);
   }]);
   app.run([
     '$couchPotato', '$state', '$stateParams', '$rootScope',
