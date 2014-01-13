@@ -23,4 +23,13 @@ module.exports = {
     assets: [
     ]
   },
+  /**
+   * [TranspondRules description]
+   * @type {Object}
+   */
+  Server: {
+    "8833": {
+      "basePath" : "build"
+    }
+  }
 }
