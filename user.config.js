@@ -28,7 +28,7 @@ module.exports = {
    * @type {Object}
    */
   Server: {
-    "8833": {
+    "8080": {
       "basePath" : "build"
     }
   }

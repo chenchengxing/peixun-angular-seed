@@ -9,7 +9,7 @@
                     <div class="control-group">
                         <label class="control-label">input-text</label>
                         <div class="controls">
-                            <input type="text" ng-model="simpleForm.inputText" id="inputText" placeholder="input some text here...">
+                            <input type="text" required ng-model="simpleForm.inputText" id="inputText" placeholder="input some text here...">
                         </div>
                     </div>
 
@@ -35,6 +35,23 @@
                             <label class="redio" ng-repeat="gen in genders">
                                 <input type="radio" value="{{gen}}" ng-model="simpleForm.inputRadio"><span>{{gen}}</span>
                             </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">select</label>
+                        <div class="controls">
+                            <select required ng-model="simpleForm.select" ng-options="customer.userId as customer.name group by customer.gender for customer in customers">
+                                <option value="">nobody</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">multiple select</label>
+                        <div class="controls">
+                            <select size="6" multiple ng-multiple="true" ng-model="simpleForm.multiSelect" ng-options="customer.name for customer in customers"  popover="use ctrl/shift to multiple selection" popover-trigger="focus" popover-append-to-body="true" popover-placement="right">
+                            </select>
                         </div>
                     </div>
 
@@ -70,6 +87,14 @@
                             <tr>
                                 <td>inputRadio</td>
                                 <td>{{simpleForm.inputRadio}}</td>
+                            </tr>
+                            <tr>
+                                <td>select</td>
+                                <td>{{simpleForm.select}}</td>
+                            </tr>
+                            <tr>
+                                <td>select</td>
+                                <td>{{simpleForm.multiSelect}}</td>
                             </tr>
                         </tbody>
                     </table>
