@@ -79,6 +79,14 @@ define(['app'], function(app) {
             dummy: $couchPotatoProvider.resolveDependencies(['zzx/CtrlZzx'])
           }
         });
+        $stateProvider.state('http', {
+          url: '/http',
+          templateUrl: 'http/http.tpl.html',
+          controller: 'CtrlHttp',
+          resolve: {
+            dummy: $couchPotatoProvider.resolveDependencies(['http/CtrlHttp'])
+          }
+        });
         angular.noop();//do not remove this line,grunt tool use this to do reg match.
       }
     ]

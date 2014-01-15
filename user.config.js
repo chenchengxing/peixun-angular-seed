@@ -27,9 +27,12 @@ module.exports = {
    * [TranspondRules description]
    * @type {Object}
    */
+  TranspondRules: {
+
+  },
   Server: {
-    "8833": {
+    "8080": {
       "basePath" : "build"
-    }
+    } 
   }
 }

@@ -27,3 +27,4 @@ node_modules/requirejs/
 
 # Other files and folders
 .idea/
+user.config.js
