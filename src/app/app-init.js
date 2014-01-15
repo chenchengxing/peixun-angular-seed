@@ -9,35 +9,35 @@ define(['app', 'routeDefs'], function(app) {
         }, function (response) {
             // do something on error
             $log.info(response);
-            if ( !errorModalFlag && !$rootScope.isDev) {
-                errorModalFlag = true;
-                var $modal = $("<div class=\"modal hide\">\n" +
-       "  <div class=\"modal-header\">\n" +
-       "    <h3>系统异常</h3>\n" +
-       "  </div>\n" +
-       "  <div class=\"modal-body\">\n" +
-       "    <p>您当前操作的请求出现了异常，您可以选择下面的操作。</p>\n" +
-       "  </div>\n" +
-       "  <div class=\"modal-footer\">\n" +
-       "    <a class=\"btn btn-system-error-stay\">留在当前页</a>\n" +
-       "    <a class=\"btn btn-primary btn-system-error-backhome\">返回系统首页</a>\n" +
-       "  </div>\n" +
-       "</div>").appendTo($("body"));
-                var $backdrop = $('<div class="modal-backdrop in" ng-class="{in: animate}" style="z-index: 1040;"></div>');
-                $backdrop.appendTo($("body"));
-                $(".btn-system-error-stay").on('click', function () {
-                    $modal.remove();
-                    $backdrop.remove();
-                    errorModalFlag = false;
-                });
-                $(".btn-system-error-backhome").on('click', function () {
-                    location.href = "#";
-                    $modal.remove();
-                    $backdrop.remove();
-                    errorModalFlag = false;
-                });
-                $modal.fadeIn(500);
-            }
+       //      if ( !errorModalFlag && !$rootScope.isDev) {
+       //          errorModalFlag = true;
+       //          var $modal = $("<div class=\"modal hide\">\n" +
+       // "  <div class=\"modal-header\">\n" +
+       // "    <h3>系统异常</h3>\n" +
+       // "  </div>\n" +
+       // "  <div class=\"modal-body\">\n" +
+       // "    <p>您当前操作的请求出现了异常，您可以选择下面的操作。</p>\n" +
+       // "  </div>\n" +
+       // "  <div class=\"modal-footer\">\n" +
+       // "    <a class=\"btn btn-system-error-stay\">留在当前页</a>\n" +
+       // "    <a class=\"btn btn-primary btn-system-error-backhome\">返回系统首页</a>\n" +
+       // "  </div>\n" +
+       // "</div>").appendTo($("body"));
+       //          var $backdrop = $('<div class="modal-backdrop in" ng-class="{in: animate}" style="z-index: 1040;"></div>');
+       //          $backdrop.appendTo($("body"));
+       //          $(".btn-system-error-stay").on('click', function () {
+       //              $modal.remove();
+       //              $backdrop.remove();
+       //              errorModalFlag = false;
+       //          });
+       //          $(".btn-system-error-backhome").on('click', function () {
+       //              location.href = "#";
+       //              $modal.remove();
+       //              $backdrop.remove();
+       //              errorModalFlag = false;
+       //          });
+       //          $modal.fadeIn(500);
+            // }
 
             return $q.reject(response);
         });

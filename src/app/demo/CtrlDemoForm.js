@@ -2,9 +2,11 @@ define([
     'app',
     '../_directives/checklistModel',
     '../_directives/ytMaxlength',
-    '../_directives/ytMinlength'
+    '../_directives/ytMinlength',
+    '../_common/modal/Modal',
+    '../_common/modal/CtrlModal'
     ], function ( app ) {
-        app.registerController( 'CtrlDemoForm', [ '$scope' , function ( $scope ) {
+        app.registerController( 'CtrlDemoForm', [ '$scope', 'Modal', function ( $scope, Modal ) {
             // $scope.colors = ['red', 'blue', 'green'];
             $scope.colors = ['red', 'green', 'blue', 'yellow'];
             $scope.genders = ['male', 'female'];
@@ -45,7 +47,7 @@ define([
                 angular.forEach($scope.simpleForm, function (value, key) {
                     text += key + " : " + value + "\n";
                 });
-                alert(text);
+                Modal.alert({title: 'form data', content: $scope.simpleForm});
             };
             $scope.emptyAll = function () {
                 $scope.simpleForm = {

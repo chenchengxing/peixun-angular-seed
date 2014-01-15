@@ -14,7 +14,7 @@
 
  */
 define(['app', '../_services/CommonService'], function (app) {
-  app.registerDirective('ytMinlength', ['Utils', 'ModalAlert', '$parse', function (Utils, ModalAlert, $parse) {
+  app.registerDirective('ytMinlength', ['Utils', 'Modal', '$parse', function (Utils, Modal, $parse) {
       return {
           restrict : "A",
           // transclude : true,
